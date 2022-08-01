@@ -2,77 +2,48 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
 }
 
-.container{
-    position: relative;
-    padding: 0 100px;
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
+    background: #000;
 }
 
-.container::before{
+.loader{
+    position: relative;
+    width: 300px;
+    height: 10px;
+    background: #fff;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+
+.loader::before{
     content: '';
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 350px;
-    height: 100%;
-    background: #333;
-    z-index: -2;
+    inset: 0;
+    background: linear-gradient(90deg,#fb0094,#0000ff,#00ff00,#ffff00,#fb0094,#00ff00,#ffff00);
+    animation: animate 20s linear infinite;
+    background-size: 500%;;
 }
 
-.container::after{
-    content: 'Healthy';
+.loader::after{
+    content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    font-size: 18vw;
-    z-index: -2;
-    font-weight: 700;
-    color: #000;
-    opacity: 0.04;
+    inset: 0;
+    background: linear-gradient(90deg,#fb0094,#0000ff,#00ff00,#ffff00,#fb0094,#00ff00,#ffff00,#fb0094);
+    animation: animate 20s linear infinite;
+    background-size: 500%;;
+    filter: blur(20px);
 }
 
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 0;
+@keyframes animate{
+    0%{
+        background-position: 0 0;
+    }
+    0%{
+        background-position: 500% 0;
+    }
 }
-
-header .logo{
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #333;
-    text-decoration: none;
-    font-size: 30px;
-}
-
-header .logo span{
-    color: #78ff00;
-}
-
-header ul{
-    position: relative;
-    display: flex;
-}
-
-header ul li{
-    list-style: none;
-    margin: 0 20px;
-}
-
-header ul li a{
-    position: relative;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 4px 10px;
-    text-decoration: none;
-}
-
-header ul li a:nth-child(3) a,
-header ul li a:nth-child(4) a{
-    color: #fff;
-}
-
